@@ -110,20 +110,24 @@ const Home = () => {
   ];
   const [search, setSearch] = useState<string>("");
 
-  const randerItem = () => {
-    console.log("test");
-    return data
-      .filter((item) => {
+  let newData = [{ img: "", title: "", des: "" }];
+  data.map(
+    () =>
+      (newData = data.filter((item) => {
         return item?.title?.indexOf(search) >= 0;
-      })
-      .map((item, index) => {
-        return (
-          <Col key={index} className="gutter-row" xs={12} sm={12} md={6}>
-            <ListCard img={item.img} title={item.title} des={item.des} />
-          </Col>
-        );
-      });
+      }))
+  );
+
+  const randerItem = () => {
+    return newData.map((item, index) => {
+      return (
+        <Col key={index} className="gutter-row" xs={12} sm={12} md={6}>
+          <ListCard img={item.img} title={item.title} des={item.des} />
+        </Col>
+      );
+    });
   };
+
   return (
     <StyledWrapper>
       <header>

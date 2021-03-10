@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { HelloProps } from "../../type.modal";
 import styled from "styled-components";
 import { Card } from "antd";
@@ -32,19 +32,15 @@ const ListCard: React.FC<HelloProps> = (props) => {
   const img = props?.img ?? "";
   const title = props?.title ?? "";
   const des = props?.des ?? "";
-  const [imgUrl] = useState<string>(img);
-  const [titleText] = useState<string>(title);
-  const [desText] = useState<string>(des);
-
   return (
     <StyledWrapper>
       <Card
         className="size-card"
         hoverable
-        cover={<img src={imgUrl} alt="" height="130px" />}
+        cover={<img src={img} alt="" height="130px" />}
       >
-        <p className="title-text">{titleText}</p>
-        <span className="des-text">{desText}</span>
+        <p className="title-text">{title}</p>
+        <span className="des-text">{des}</span>
       </Card>
     </StyledWrapper>
   );
